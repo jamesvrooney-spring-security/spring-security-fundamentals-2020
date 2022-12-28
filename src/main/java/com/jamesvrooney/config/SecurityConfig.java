@@ -17,30 +17,30 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
 
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+//        return httpSecurity
+//                .httpBasic()
+//                .and()
+//                .build();
+//    }
+
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity
-                .httpBasic()
-                .and()
+    public UserDetailsService userDetailsService() {
+        final var userDetailsService = new InMemoryUserDetailsManager();
+
+        final UserDetails john = User.withUsername("johnboy")
+                .password(passwordEncoder().encode("password"))
+                .authorities("read")
                 .build();
+
+        userDetailsService.createUser(john);
+
+        return userDetailsService;
     }
 
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        final var userDetailsService = new InMemoryUserDetailsManager();
-//
-//        final UserDetails john = User.withUsername("john")
-//                .password(passwordEncoder().encode("password"))
-//                .authorities("read")
-//                .build();
-//
-//        userDetailsService.createUser(john);
-//
-//        return userDetailsService;
-//    }
-
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
