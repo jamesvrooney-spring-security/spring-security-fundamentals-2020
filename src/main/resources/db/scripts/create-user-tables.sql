@@ -1,13 +1,12 @@
 CREATE TABLE IF NOT EXISTS users
 (
-    id integer NOT NULL PRIMARY KEY,
+--    id integer NOT NULL PRIMARY KEY,
     username character varying NOT NULL,
     password character varying NOT NULL,
     enabled boolean
 );
 
 CREATE TABLE IF NOT EXISTS authorities (
-    id integer NOT NULL PRIMARY KEY,
     username character varying NOT NULL,
     authority character varying NOT NULL
 );
