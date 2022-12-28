@@ -17,13 +17,13 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity
-                .httpBasic()
-                .and()
-                .build();
-    }
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+//        return httpSecurity
+//                .httpBasic()
+//                .and()
+//                .build();
+//    }
 
     @Bean
     public UserDetailsService userDetailsService() {
