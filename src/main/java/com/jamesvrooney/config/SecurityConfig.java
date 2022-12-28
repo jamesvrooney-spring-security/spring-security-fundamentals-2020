@@ -25,22 +25,22 @@ public class SecurityConfig {
                 .build();
     }
 
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        final var userDetailsService = new InMemoryUserDetailsManager();
-//
-//        final UserDetails john = User.withUsername("john")
-//                .password(passwordEncoder().encode("password"))
-//                .authorities("read")
-//                .build();
-//
-//        userDetailsService.createUser(john);
-//
-//        return userDetailsService;
-//    }
+    @Bean
+    public UserDetailsService userDetailsService() {
+        final var userDetailsService = new InMemoryUserDetailsManager();
 
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+        final UserDetails john = User.withUsername("johnboy")
+                .password(passwordEncoder().encode("password"))
+                .authorities("read")
+                .build();
+
+        userDetailsService.createUser(john);
+
+        return userDetailsService;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
