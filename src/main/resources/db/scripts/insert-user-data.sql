@@ -1,9 +1,9 @@
-insert into users (id, username, password) values
-(1, 'james', 'password');
+insert into users (id, username, password, enabled) values
+(1, 'james', 'password', true);
 
-insert into authorities (id, name) values
-(1, 'read'),
-(2, 'write');
+insert into authorities (id, username, authority) values
+(1, 'james', 'read'),
+(2, 'james', 'write');
 
 insert into users_authorities (user_id, authority_id) values
 (1, 1);
