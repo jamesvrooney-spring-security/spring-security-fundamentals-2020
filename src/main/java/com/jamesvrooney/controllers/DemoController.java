@@ -13,7 +13,7 @@ public class DemoController {
     public String demo(Authentication authentication) {
         final var name = authentication.getName();
 
-        log.info("Logged in user: {}", name);
+        log.info("User authenticated: {}", name);
 
         final var greeting = "Hello " + name;
 
