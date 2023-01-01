@@ -23,7 +23,7 @@ public class JPAUserDetailsService implements UserDetailsService {
         final SecurityUser userFromDb = user.map(SecurityUser::new)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-        log.info("User from database retrieved: {}", userFromDb.getUsername());
+        log.info("User retrieved from database: {}", userFromDb.getUsername());
         
         return userFromDb;
     }
