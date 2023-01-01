@@ -10,24 +10,22 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
 @AllArgsConstructor
 @Component
-public class CustomAuthenticationFilter implements Filter {
+public class CustomAuthenticationFilter extends OncePerRequestFilter {
 
     private CustomAuthenticationManager customAuthenticationManager;
 
     @Override
-    public void doFilter(ServletRequest request,
-                         ServletResponse response,
-                         FilterChain filterChain) throws IOException, ServletException {
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain filterChain) throws ServletException, IOException {
 
-        var httpRequest = (HttpServletRequest) request;
-        var httpResponse = (HttpServletResponse) response;
-
-        var key = httpRequest.getHeader("x-api-key");
+        var key = request.getHeader("x-api-key");
 
         var customAuthentication = new CustomAuthentication(false, key);
 
@@ -40,7 +38,7 @@ public class CustomAuthenticationFilter implements Filter {
                 filterChain.doFilter(request, response);
             }
         } catch (AuthenticationException ex) {
-            httpResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         }
     }
 }
