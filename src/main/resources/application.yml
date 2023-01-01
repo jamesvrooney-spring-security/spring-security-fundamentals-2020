@@ -2,4 +2,4 @@ spring:
   output.ansi.enabled: always
 
 
-key: guisd98
+key: secret
