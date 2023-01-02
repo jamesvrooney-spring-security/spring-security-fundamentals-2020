@@ -1,10 +1,10 @@
 spring:
   output.ansi.enabled: always
 
-
-  security.user:
-    name: james
-    password: password
+#
+#  security.user:
+#    name: james
+#    password: password
 
   datasource:
     url: jdbc:postgresql://localhost:5432/spring-security-fundamentals-2020
