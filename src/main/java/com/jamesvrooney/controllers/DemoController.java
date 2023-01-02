@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
     @GetMapping("demo")
-    public String demo() {
+    public String demo(Authentication authentication) {
 
         log.info("Testing /demo endpoint");
 
-        var name = "James";
+        var name = authentication.getName();
 
         final var greeting = "Hello " + name;
 

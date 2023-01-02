@@ -2,4 +2,16 @@ spring:
   output.ansi.enabled: always
 
 
-key: secret
+  security.user:
+    name: james
+    password: password
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/spring-security-fundamentals-2020
+    username: postgres
+    password: postgres
+
+  jpa:
+    properties.hibernate:
+      jdbc.lob.non_contextual_creation: true
+      dialect: org.hibernate.dialect.PostgreSQLDialect
