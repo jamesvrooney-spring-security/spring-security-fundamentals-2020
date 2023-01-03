@@ -15,7 +15,7 @@ public class DemoController {
 
         log.info("User authenticated: {}", name);
 
-        final var greeting = "Hello - your name is " + name;
+        final var greeting = "Hello - your name is: " + name;
 
         return greeting;
     }
